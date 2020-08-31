@@ -1,0 +1,12 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-color: #CD2E3A;
+  padding: 0px 24px;
+}
+
+.menu {
+  line-height: 1.5em !important;
+  margin: margin 0;
+}
