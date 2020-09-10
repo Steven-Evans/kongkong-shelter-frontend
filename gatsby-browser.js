@@ -4,5 +4,5 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import 'antd/dist/antd.css';
-import './src/styles/global.css';
+import "antd/dist/antd.css";
+import "./src/styles/global.css";

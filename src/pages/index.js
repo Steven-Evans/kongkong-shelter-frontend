@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => (
           ))} */}
           <Img fluid={posting.node.media.childImageSharp.fluid} />
           <p>{posting.node.description}</p>
-        </li> 
+        </li>
       ))}
     </ul>
     <Link to="/page-2/">Go to page 2</Link> <br />
