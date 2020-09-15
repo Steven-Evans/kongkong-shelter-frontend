@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import Layout from "../components/NavLayout/index"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
+import Layout from "../components/NavLayout/index";
 
 export const query = graphql`
 query PostingTemplate($id: Int!) {
@@ -17,7 +17,7 @@ query PostingTemplate($id: Int!) {
     }
   }
 }
-`
+`;
 
 
 
@@ -27,6 +27,6 @@ const ArticleTemplate = ({ data }) => (
     <Img fluid={data.strapiPosting.media.childImageSharp.fluid} />
     <p>{data.strapiPosting.description}</p>
   </Layout>
-)
+);
 
-export default ArticleTemplate
+export default ArticleTemplate;
