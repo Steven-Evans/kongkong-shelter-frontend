@@ -5,17 +5,17 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useStaticQuery, graphql } from "gatsby";
-// import Image from "../logo-image";
+import { enquireScreen } from 'enquire-js';
+import Image from "../logo-image";
 import Footer from "../footer";
-import styles from "./nav-layout.module.css";
+import styles from "./nav-layout.module.less";
 
-import { Layout, Menu, Row, Col } from "antd";
+import { Layout, Menu, Row, Col, Popover} from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 const { Header, Content } = Layout;
-
-
 
 const NavLayout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,59 +28,74 @@ const NavLayout = ({ children }) => {
     }
   `);
 
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [menuMode, setMenuMode] = useState('horizontal');
+
+  useEffect(() => {
+    enquireScreen((mobile) => {
+      setMenuMode(mobile ? 'inline' : 'horizontal');
+    }, "only screen and (max-width: 1099.99px)");
+  });
+
+  const menu = (
+    <Menu mode={menuMode} className={styles.menu} id="nav" key="nav">
+      <Menu.Item key="about">
+        <Link to="/about-us/">About Us</Link>
+      </Menu.Item>
+      <Menu.Item key="adopting">
+        <Link to="/adopting/">Adopting</Link>
+      </Menu.Item>
+      <Menu.Item key="donating">
+        <Link to="/donating/">Donating</Link>
+      </Menu.Item>
+      <Menu.Item key="faq">
+        <Link to="/faq/">FAQ</Link>
+      </Menu.Item>
+      <Menu.Item key="contact">
+        <Link to="/contact-us/">Contact Us</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <Layout>
       <Header className={styles.header}>
-        {/* <div style={{ maxWidth: "1200px", margin: "0 auto" }}> */}
-        <Row gutter={24} align={"middle"}>
-          <Col span={3}>
-            <Link to="/">
-              <div style={{ maxWidth: `64px` }}>
-                {/*<Image />*/}
-              </div>
-            </Link>
+        {menuMode === 'inline' ? (
+          <Popover
+            overlayClassName={styles.popoverMenu}
+            placement="bottomRight"
+            content={menu}
+            trigger="click"
+            visible={menuVisible}
+            arrowPointAtCenter
+          >
+            <MenuOutlined
+              className={styles.navMenuIcon}
+              onClick={() => setMenuVisible(!menuVisible)}
+            />
+          </Popover>
+        ) : null}
+        <Row align="middle">
+          <Col md={12} sm={24} xs={24} >
+            <div className={styles.logo}>
+              <Link to="/">
+                  <Image className={styles.image}/>
+              </Link>
+              <Link to="/">
+                <h1 className={styles.title}>
+                  {data.site.siteMetadata.title}
+                </h1>
+              </Link>
+            </div>
           </Col>
-          <Col span={9}>
-            <Link to="/">
-              <h1 style={{ marginBottom: `0px`}}>
-                {data.site.siteMetadata.title}
-              </h1>
-            </Link>
-
-          </Col>
-          <Col span={12}>
-            <Menu
-              className={styles.menu}
-              mode="horizontal"
-            >
-              <Menu.Item key="1">
-                <Link to="/about-us/">About Us</Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/adopting/">Adopting</Link>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Link to="/donating/">Donating</Link>
-              </Menu.Item>
-              <Menu.Item key="4">
-                <Link to="/faq/">FAQ</Link>
-              </Menu.Item>
-              <Menu.Item key="5">
-                <Link to="/contact-us/">Contact Us</Link>
-              </Menu.Item>
-            </Menu>
+          <Col md={12} sm={0} xs={0}>
+            {menuMode === 'horizontal' ? <div className={styles.horizontalMenu}>{menu}</div> : null}
           </Col>
         </Row>
-        {/* </div> */}
+        
       </Header>
-      <Content
-        style={{
-          padding: "24px 50px",
-          background: `#fff`,
-          minHeight: "100vh", //edit this to change minimum page height
-        }}
-      >
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>{children}</div>
+      <Content className={styles.content}>
+        <div className={styles.contentChildren}>{children}</div>
       </Content>
       <Footer />
     </Layout>
