@@ -19,7 +19,8 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
         contentTypes: [
-          `posting`
+          `posting`,
+          `faq`
         ],
         queryLimit: 1000,
       },
@@ -42,4 +43,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],
-}
+};
