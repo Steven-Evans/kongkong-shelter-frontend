@@ -95,7 +95,7 @@ const NavLayout = ({ children }) => {
         
       </Header>
       <Content className={styles.content}>
-        <div className={styles.contentChildren}>{children}</div>
+        {children}
       </Content>
       <Footer />
     </Layout>

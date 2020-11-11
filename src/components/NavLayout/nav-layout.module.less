@@ -1,15 +1,11 @@
 @title-font-size: 30px;
+@small-title-font-size: 18px;
 @header-height: 128px;
 
 .content {
-  padding: 24px 0px;
   background: #fff;
   min-height: 100vh;
-          
-  .content-children {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  width: 100%
 }
 
 .header {
@@ -51,4 +47,34 @@
 .title {
   white-space: nowrap;
   font-size: @title-font-size;
+}
+
+@media only screen and (max-width: 1100px) {
+  .header {
+    padding: 0px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .header {
+    height: @header-height / 2;
+  }
+
+  .logo {
+    line-height: 1em;
+  }
+
+  .title {
+    font-size: @small-title-font-size;
+  }
+
+  .image {
+    width: @header-height / 2;
+  }
+
+  .nav-menu-icon {
+    top: (@header-height / 2 - @small-title-font-size) / 2;
+    right: 20px;
+    font-size: @title-font-size / 1.5;
+  }
 }
