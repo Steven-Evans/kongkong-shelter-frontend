@@ -31,3 +31,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+exports.sourceNodes = ({actions}) => {
+  const {createTypes} = actions;
+  const typeDefs = `
+    type StrapiFaq implements Node {
+      question: String!
+      answer: String!
+      media: File
+    }
+    type StrapiPosting implements Node {
+      title: String!
+      description: String!
+      media: File
+    }
+  `;
+  createTypes(typeDefs);
+}
