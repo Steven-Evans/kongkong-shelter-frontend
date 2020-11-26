@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { enquireScreen } from 'enquire-js';
+import Divider from "../Divider/index";
 import Image from "../logo-image";
 import Footer from "../footer";
 import styles from "./nav-layout.module.less";
@@ -95,6 +96,7 @@ const NavLayout = ({ children }) => {
         
       </Header>
       <Content className={styles.content}>
+        <Divider />
         {children}
       </Content>
       <Footer />

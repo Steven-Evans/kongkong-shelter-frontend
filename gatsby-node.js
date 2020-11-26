@@ -45,6 +45,10 @@ exports.sourceNodes = ({actions}) => {
       description: String!
       media: File
     }
+    type StrapiHeroImage implements Node {
+      heroImageDesktop: File!
+      heroImageMobile: File
+    }
   `;
   createTypes(typeDefs);
 }

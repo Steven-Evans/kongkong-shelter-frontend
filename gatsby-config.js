@@ -22,6 +22,9 @@ module.exports = {
           `posting`,
           `faq`
         ],
+        singleTypes: [ 
+          `hero-image`
+        ],
         queryLimit: 1000,
       },
     },

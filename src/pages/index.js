@@ -2,12 +2,16 @@ import React from "react";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 
+import Hero from "../components/Hero/index";
+import Divider from "../components/Divider/index";
 import Layout from "../components/NavLayout/index";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
+    <Hero />
+    <Divider />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
