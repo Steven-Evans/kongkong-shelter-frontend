@@ -19,8 +19,9 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
         contentTypes: [
-          `posting`,
-          `faq`
+          `faq`,
+          `home-detail`,
+          `posting`
         ],
         singleTypes: [ 
           `hero-image`

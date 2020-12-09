@@ -47,8 +47,8 @@ const Hero = ({ children }) => {
       />
       <div className={styles.bannerOverlay} />
       <div className={styles.textOverlay}>
-        <h1 className={styles.heroText}>This is a dog shelter site!</h1>
-        <h2 className={styles.heroTextSub}>More content</h2>
+        <h1 className={styles.heroText}>Welcome to our Dog Shelter!</h1>
+        <h2 className={styles.heroTextSub}>We are a no-kill rescue shelter in South Korea, solely run by volunteers who are doing international work to find all of our 100+ dogs loving homes all over the world.</h2>
       </div>
     </div>
   );

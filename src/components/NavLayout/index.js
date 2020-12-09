@@ -80,7 +80,7 @@ const NavLayout = ({ children }) => {
           <Col md={12} sm={24} xs={24} >
             <div className={styles.logo}>
               <Link to="/">
-                  <Image className={styles.image}/>
+                <Image className={styles.image}/>
               </Link>
               <Link to="/">
                 <h1 className={styles.title}>

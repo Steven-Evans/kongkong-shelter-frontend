@@ -49,6 +49,11 @@ exports.sourceNodes = ({actions}) => {
       heroImageDesktop: File!
       heroImageMobile: File
     }
+    type StrapiHomeDetail implements Node {
+      title: String!
+      details: String!
+      media: File!
+    }
   `;
   createTypes(typeDefs);
 }
