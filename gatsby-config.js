@@ -21,11 +21,10 @@ module.exports = {
         contentTypes: [
           `faq`,
           `home-detail`,
-          `posting`
+          `posting`,
+          `alumni-carousel-image`,
         ],
-        singleTypes: [ 
-          `hero-image`
-        ],
+        singleTypes: [`hero-image`],
         queryLimit: 1000,
       },
     },
