@@ -8,13 +8,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { enquireScreen } from 'enquire-js';
+import { enquireScreen } from "enquire-js";
 import Divider from "../Divider/index";
 import Image from "../logo-image";
 import Footer from "../footer";
 import styles from "./nav-layout.module.less";
 
-import { Layout, Menu, Row, Col, Popover} from "antd";
+import { Layout, Menu, Row, Col, Popover } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 const { Header, Content } = Layout;
 
@@ -30,11 +30,11 @@ const NavLayout = ({ children }) => {
   `);
 
   const [menuVisible, setMenuVisible] = useState(false);
-  const [menuMode, setMenuMode] = useState('horizontal');
+  const [menuMode, setMenuMode] = useState("horizontal");
 
   useEffect(() => {
     enquireScreen((mobile) => {
-      setMenuMode(mobile ? 'inline' : 'horizontal');
+      setMenuMode(mobile ? "inline" : "horizontal");
     }, "only screen and (max-width: 1099.99px)");
   });
 
@@ -61,7 +61,7 @@ const NavLayout = ({ children }) => {
   return (
     <Layout>
       <Header className={styles.header}>
-        {menuMode === 'inline' ? (
+        {menuMode === "inline" ? (
           <Popover
             overlayClassName={styles.popoverMenu}
             placement="bottomRight"
@@ -77,23 +77,20 @@ const NavLayout = ({ children }) => {
           </Popover>
         ) : null}
         <Row align="middle">
-          <Col md={12} sm={24} xs={24} >
+          <Col md={12} sm={24} xs={24}>
             <div className={styles.logo}>
               <Link to="/">
-                <Image className={styles.image}/>
+                <Image className={styles.image} />
               </Link>
               <Link to="/">
-                <h1 className={styles.title}>
-                  {data.site.siteMetadata.title}
-                </h1>
+                <h1 className={styles.title}>{data.site.siteMetadata.title}</h1>
               </Link>
             </div>
           </Col>
           <Col md={12} sm={0} xs={0}>
-            {menuMode === 'horizontal' ? <div className={styles.horizontalMenu}>{menu}</div> : null}
+            {menuMode === "horizontal" ? <div className={styles.horizontalMenu}>{menu}</div> : null}
           </Col>
         </Row>
-        
       </Header>
       <Content className={styles.content}>
         <Divider />
